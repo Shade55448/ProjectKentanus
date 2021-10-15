@@ -14,7 +14,7 @@ const UserRepository_1 = require("../Database/Repository/UserRepository");
 const Schema_1 = require("../Database/Schema/Schema");
 function setServer() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (0, mongoose_1.connect)('mongodb://localhost:27017/test');
+        yield (0, mongoose_1.connect)('mongodb://localhost:27017/kentanus');
         const a = new UserRepository_1.default((0, mongoose_1.model)('User', (0, Schema_1.default)()));
         const express = require('express');
         const app = express();
@@ -24,18 +24,10 @@ function setServer() {
         });
         app.post('/register', function (req, res) {
             return __awaiter(this, void 0, void 0, function* () {
-                const result = yield a.registerUser(req.body);
-                res.setHeader('content-type', 'application/json');
-                let resultMessage = 'User was created';
-                res.status(200);
-                if (!result) {
-                    res.status(400);
-                    resultMessage = 'User was not created';
-                }
-                res.send(JSON.stringify({ message: resultMessage }));
+                a.registerUser(req.body, res);
             });
         });
-        app.listen(80);
+        app.listen(8080);
         console.log('Server started');
     });
 }

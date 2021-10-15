@@ -1,23 +1,31 @@
-import IUser from "../Entity/Interface/IUser";
+import { Response } from "express";
+import User from "../Entity/User";
 
 export default class UserRepository {
-    constructor(private userModel: any){
+    constructor(private userModel: any) {
     }
 
-    public async registerUser(user: IUser): Promise<boolean> {
+    public async registerUser(user: User, res: Response): Promise<void> {
+        res.setHeader('content-type', 'application/json');
+
+        res.status(400);
+        let resultMessage = 'User was not created';
+
         const existedUser = await this.findByUser(user);
         if (existedUser === undefined) {
             const newUser = new this.userModel(user);
             await newUser.save();
-            return true;
+            res.status(200);
+            resultMessage = 'User was created';
         }
-        return false;
+
+        res.send(JSON.stringify({ message: resultMessage }));
     }
 
-    public async findByUser(user: IUser): Promise<IUser | undefined> {
+    public async findByUser(user: User): Promise<User | undefined> {
         const existedUser = await this.userModel.findOne({ name: user.name });
         if (existedUser) {
-          return existedUser as IUser;
+            return existedUser as User;
         }
         return undefined;
     }

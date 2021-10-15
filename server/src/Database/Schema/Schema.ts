@@ -1,8 +1,8 @@
 import { Schema } from "mongoose";
-import IUser from "../Entity/Interface/IUser";
+import User from "../Entity/User";
 
 export default function userSchema(): Schema {
-    return new Schema<IUser>({
+    return new Schema<User>({
         name: { type: String, required: true },
         password: { type: String, required: true },
         email: { type: String, required: true }
