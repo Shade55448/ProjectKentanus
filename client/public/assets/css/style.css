@@ -336,12 +336,15 @@ header .powered-by img {
   width: 100%;
   height: 100%;
   min-height: 100vh;
+  background-image: url("../img/home-bg.svg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 .ws-home .left-side {
-  padding: 40px 44px;
+  padding: 40px 44px 80px 44px;
   position: relative;
-  flex: 0 0 580px;
-  max-width: 580px;
+  flex: 0 0 600px;
+  max-width: 600px;
 }
 .ws-home .left-side .ls-foreground {
   z-index: 2;
@@ -362,11 +365,11 @@ header .powered-by img {
   background: linear-gradient(to left, #3498DB, #0099FF);
   position: absolute;
   z-index: 1;
-  width: 200%;
-  height: 200%;
-  left: -116%;
+  width: 2400px;
+  height: 2400px;
+  left: -1580px;
   top: 0;
-  transform: rotate(-30deg);
+  transform: rotate(-18deg);
 }
 .ws-home .left-side .home-link img {
   width: 60px;
@@ -380,6 +383,139 @@ header .powered-by img {
 .ws-home .left-side .home-link img, .ws-home .left-side .home-link span {
   display: inline-block;
   vertical-align: middle;
+}
+.ws-home .left-side .home-title {
+  font-size: 32px;
+  font-weight: 500;
+  color: #ebebeb;
+  display: block;
+  margin-top: 200px;
+}
+.ws-home .left-side .home-intro-text {
+  font-size: 16px;
+  color: #ebebeb;
+  font-weight: 400;
+  line-height: 1.6em;
+}
+.ws-home .left-side .home-copyright {
+  position: absolute;
+  display: block;
+  bottom: 40px;
+  color: #ebebeb;
+  font-size: 12px;
+  z-index: 2;
+}
+.ws-home .right-side {
+  position: relative;
+  flex: 0 0 calc(100% - 600px);
+  max-width: calc(100% - 600px);
+}
+.ws-home .right-side .home-form-wrap {
+  position: absolute;
+  right: 60px;
+  top: 200px;
+}
+
+.home-form {
+  width: 430px;
+}
+.home-form .hf-head {
+  padding: 0 58px;
+}
+.home-form .hf-head .hf-toggle {
+  width: 100%;
+  background-color: #ebebeb;
+  border-radius: 33px 33px 0 0;
+  position: relative;
+}
+.home-form .hf-head .hf-toggle .toggle-item {
+  border-radius: 33px 33px 0 0;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 19px 0px;
+  text-align: center;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 2;
+  position: relative;
+  color: #141414;
+  -moz-transition: 0.3s color;
+  -o-transition: 0.3s color;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+.home-form .hf-head .hf-toggle .toggle-item:hover {
+  color: #ebebeb;
+}
+.home-form .hf-head .hf-toggle .toggle-item.hf-card-active {
+  color: #ebebeb;
+}
+.home-form .hf-head .hf-toggle:hover .hf-card-active {
+  color: #141414 !important;
+}
+.home-form .hf-head .hf-toggle:hover .hf-card-active:hover {
+  color: #ebebeb !important;
+}
+.home-form .hf-head .hf-toggle .slide-card {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: translateX(0%);
+  border-radius: 33px 33px 0 0;
+  background-color: #3498DB;
+  -moz-transition: 0.3s transform;
+  -o-transition: 0.3s transform;
+  -webkit-transition: 0.3s transform;
+  transition: 0.3s transform;
+}
+.home-form .hf-body .hf-card {
+  border-radius: 26px;
+  background-color: #3498DB;
+  padding: 70px 58px;
+  display: none;
+}
+.home-form .hf-body .hf-card.hf-card-active {
+  display: block;
+}
+.home-form .hf-body .hf-card .input-box {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.home-form .hf-body .hf-card .input-box:not(:last-child) {
+  margin-bottom: 20px;
+}
+.home-form .hf-body .hf-card .input-box input {
+  border-radius: 30px;
+  border: 2px solid #ffffff;
+  padding: 13px 21px;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  font-weight: 500;
+  color: #141414;
+  background-color: #ffffff;
+}
+.home-form .hf-body .hf-card .btn-confirm {
+  color: #3498DB;
+  background-color: #ffffff;
+  padding: 13px 21px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  border-radius: 30px;
+  -moz-transition: 0.3s background-color;
+  -o-transition: 0.3s background-color;
+  -webkit-transition: 0.3s background-color;
+  transition: 0.3s background-color;
+}
+.home-form .hf-body .hf-card .btn-confirm:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /*# sourceMappingURL=style.css.map */

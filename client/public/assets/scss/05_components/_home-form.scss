@@ -1,0 +1,95 @@
+.home-form{
+  width: 430px;
+  .hf-head{
+    padding: 0 58px;
+
+    .hf-toggle{
+      width: 100%;
+      background-color: $white;
+      border-radius: 33px 33px 0 0;
+      position: relative;
+
+      .toggle-item{
+        border-radius: 33px 33px 0 0;
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 19px 0px;
+        text-align: center;
+        font-size: 20px;
+        background-color: rgba(0,0,0,0);
+        z-index: 2;
+        position: relative;
+        color: $black;
+        @include transition(.3s color);
+
+        &:hover{
+          color: $white;
+        }
+        &.hf-card-active{
+          color: $white;
+        }
+      }
+      &:hover{
+        .hf-card-active{
+          color: $black !important;
+          &:hover{color: $white !important;}
+        }
+      }
+      .slide-card{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        transform: translateX(0%);
+        border-radius: 33px 33px 0 0;
+        background-color: $blue;
+        @include transition(.3s transform);
+      }
+    }
+  }
+  .hf-body{
+    .hf-card{
+      border-radius: 26px;
+      background-color: $blue;
+      padding: 70px 58px;
+      display: none;
+
+      &.hf-card-active{display: block;}
+
+      .input-box{
+        position: relative;
+        width: 100%;
+        display: block;
+        &:not(:last-child){margin-bottom: 20px;}
+
+        input{
+          border-radius: 30px;
+          border: 2px solid #ffffff;
+          padding: 13px 21px;
+          font-size: 16px;
+          outline: none;
+          width: 100%;
+          font-weight: 500;
+          color: $black;
+          background-color: #ffffff;
+        }
+      }
+      .btn-confirm{
+        color: $blue;
+        background-color: #ffffff;
+        padding: 13px 21px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        outline: none;
+        text-align: center;
+        width: 100%;
+        border-radius: 30px;
+        @include transition(.3s background-color);
+
+        &:hover{background-color: rgba(255,255,255,.8);}
+      }
+    }
+  }
+}
