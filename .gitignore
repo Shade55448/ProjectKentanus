@@ -1,4 +1,5 @@
 .DS_Store
+/database
 node_modules
 /dist
 
