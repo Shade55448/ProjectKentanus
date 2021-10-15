@@ -13,15 +13,19 @@ class UserRepository {
     constructor(userModel) {
         this.userModel = userModel;
     }
-    registerUser(user) {
+    registerUser(user, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            res.setHeader('content-type', 'application/json');
+            res.status(400);
+            let resultMessage = 'User was not created';
             const existedUser = yield this.findByUser(user);
             if (existedUser === undefined) {
                 const newUser = new this.userModel(user);
                 yield newUser.save();
-                return true;
+                res.status(200);
+                resultMessage = 'User was created';
             }
-            return false;
+            res.send(JSON.stringify({ message: resultMessage }));
         });
     }
     findByUser(user) {
