@@ -1,6 +1,7 @@
 version: '3.8'
 services:
-  mongodb_container:
+  mongodb:
+    container_name: mongo-db
     image: mongo:latest
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -9,3 +10,19 @@ services:
       - 27017:27017
     volumes:
       - ./database:/data/db
+  frontend:
+    container_name: vue-client
+    build:
+      dockerfile: client/Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - backend
+  backend:
+    container_name: node-server
+    build:
+      dockerfile: server/Dockerfile
+    ports:
+      - '9090:80'
+    depends_on:
+      - mongodb
