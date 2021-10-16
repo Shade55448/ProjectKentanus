@@ -1,4 +1,5 @@
 import { Response } from "express";
+import Token from "../../Token/Token";
 import User from "../Entity/User";
 
 export default class UserRepository {
@@ -20,6 +21,26 @@ export default class UserRepository {
         }
 
         res.send(JSON.stringify({ message: resultMessage }));
+    }
+
+    public async login(user: User, res: Response): Promise<void> {
+        res.setHeader('content-type', 'application/json');
+        let resultData: object = { message: 'Wrong credentials' };
+        res.status(400);
+
+        const logUser = await this.findByUser(user);
+        if (logUser.password === user.password) {
+            const token = new Token().getToken(user);
+            res.status(200);
+            resultData = {
+                message: 'Logged!',
+                name: user.name,
+                token
+            };
+            logUser.token = token;
+            await this.userModel.updateOne(logUser);
+        }
+        res.send(JSON.stringify(resultData));
     }
 
     public async findByUser(user: User): Promise<User | undefined> {

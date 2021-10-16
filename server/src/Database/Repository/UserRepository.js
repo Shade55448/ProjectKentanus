@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Token_1 = require("../../Token/Token");
 class UserRepository {
     constructor(userModel) {
         this.userModel = userModel;
@@ -26,6 +27,26 @@ class UserRepository {
                 resultMessage = 'User was created';
             }
             res.send(JSON.stringify({ message: resultMessage }));
+        });
+    }
+    login(user, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            res.setHeader('content-type', 'application/json');
+            let resultData = { message: 'Wrong credentials' };
+            res.status(400);
+            const logUser = yield this.findByUser(user);
+            if (logUser.password === user.password) {
+                const token = new Token_1.default().getToken(user);
+                res.status(200);
+                resultData = {
+                    message: 'Logged!',
+                    name: user.name,
+                    token
+                };
+                logUser.token = token;
+                yield this.userModel.updateOne(logUser);
+            }
+            res.send(JSON.stringify(resultData));
         });
     }
     findByUser(user) {
