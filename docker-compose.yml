@@ -4,9 +4,12 @@ services:
     container_name: mongo-db
     image: mongo:latest
     ports:
-      - 27017:27017
+      - '27017:27017'
     volumes:
       - ./database:/data/db
+    networks:
+      ProjectKentanus-lan:
+        ipv4_address: 172.25.0.12
   frontend:
     container_name: vue-client
     build:
@@ -15,11 +18,29 @@ services:
       - '8080:8080'
     depends_on:
       - backend
+    networks:
+      ProjectKentanus-lan:
+        ipv4_address: 172.25.0.11
   backend:
     container_name: node-server
     build:
       dockerfile: server/Dockerfile
     ports:
-      - '9090:80'
+      - '9090:8080'
     depends_on:
       - mongodb
+    environment:
+      - DB=172.25.0.12:27017
+    volumes:
+      - ./dev:/test
+    networks:
+      ProjectKentanus-lan:
+        ipv4_address: 172.25.0.10
+
+networks:
+  ProjectKentanus-lan:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/24

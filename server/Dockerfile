@@ -1,13 +1,11 @@
-# base image
-FROM node
+FROM node:lts-alpine
 
-# set working directory
 WORKDIR /app
 
-# install and cache app dependencies
-COPY ["server/package.json", "server/package-lock.json*", "./"]
+COPY package*.json ./
+
 RUN npm install
 
 COPY . .
-# start app
-CMD ["node", "server.js"]
+
+CMD [ "node", "server.js" ]
