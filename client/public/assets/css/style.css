@@ -81,151 +81,26 @@ a {
 }
 
 header {
-  padding: 38px 25px;
-  align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
+  position: fixed;
+  padding: 16px 0;
+  background-color: #3498DB;
   width: 100%;
-  display: block;
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
 }
-header .logo-box .left-side span, header .logo-box .left-side img {
-  display: block;
-}
-header .logo-box .left-side img {
-  width: 250px;
-}
-header .logo-box .left-side span {
-  letter-spacing: 0.02em;
-  margin-top: 10px;
-  color: #000000;
-}
-header .logo-box .right-side {
-  margin-left: 21px;
-}
-header .logo-box .right-side img {
-  width: 44px;
-}
-header .logo-box .left-side, header .logo-box .right-side {
-  display: inline-block;
-  vertical-align: middle;
-}
-header .main-nav {
-  padding-left: 60px;
-}
-header .main-nav .nav-menu {
-  list-style: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-header .main-nav .nav-menu li {
-  display: inline-block;
-  vertical-align: middle;
-}
-header .main-nav .nav-menu li a {
-  text-transform: uppercase;
-  position: relative;
-  color: #141414;
-}
-header .main-nav .nav-menu li a.router-link-active:not(.spec-btn):after {
-  bottom: -6px;
-  opacity: 1;
-  width: 80%;
-}
-header .main-nav .nav-menu li a.router-link-active .spec-btn {
-  color: #ffffff;
-}
-header .main-nav .nav-menu li a.router-link-active .spec-btn:after {
-  width: 140%;
-  height: 140%;
-}
-header .main-nav .nav-menu li a:not(.spec-btn):after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #141414;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 4px;
-  opacity: 0;
-  width: 10%;
-  -moz-transition: 0.2s opacity 0.2s, 0.2s bottom 0.2s, 0.2s width 0s;
-  -o-transition: 0.2s opacity 0.2s, 0.2s bottom 0.2s, 0.2s width 0s;
-  -webkit-transition: 0.2s opacity 0.2s, 0.2s bottom 0.2s, 0.2s width 0s;
-  transition: 0.2s opacity 0.2s, 0.2s bottom 0.2s, 0.2s width 0s;
-  transition-timing-function: ease-in-out;
-  pointer-events: none;
-}
-header .main-nav .nav-menu li a:not(.spec-btn):hover:after {
-  bottom: -6px;
-  opacity: 1;
-  width: 80%;
-  -moz-transition: 0.2s opacity 0s, 0.2s bottom 0s, 0.2s width 0.2s;
-  -o-transition: 0.2s opacity 0s, 0.2s bottom 0s, 0.2s width 0.2s;
-  -webkit-transition: 0.2s opacity 0s, 0.2s bottom 0s, 0.2s width 0.2s;
-  transition: 0.2s opacity 0s, 0.2s bottom 0s, 0.2s width 0.2s;
-}
-header .main-nav .nav-menu li a .spec-btn {
-  position: relative;
-  color: #141414;
-  -moz-transition: 0.2s color 0s;
-  -o-transition: 0.2s color 0s;
-  -webkit-transition: 0.2s color 0s;
-  transition: 0.2s color 0s;
-}
-header .main-nav .nav-menu li a .spec-btn span {
-  position: relative;
-  z-index: 2;
-}
-header .main-nav .nav-menu li a .spec-btn:after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0%;
-  height: 10%;
-  transform: translate(-50%, -50%);
-  background-color: #141414;
-  -moz-transition: 0.2s width 0.2s, 0.2s height 0s;
-  -o-transition: 0.2s width 0.2s, 0.2s height 0s;
-  -webkit-transition: 0.2s width 0.2s, 0.2s height 0s;
-  transition: 0.2s width 0.2s, 0.2s height 0s;
-  pointer-events: none;
-}
-header .main-nav .nav-menu li a .spec-btn:hover {
-  color: #ffffff;
-  -moz-transition: 0.2s color 0.2s;
-  -o-transition: 0.2s color 0.2s;
-  -webkit-transition: 0.2s color 0.2s;
-  transition: 0.2s color 0.2s;
-}
-header .main-nav .nav-menu li a .spec-btn:hover:after {
-  width: 140%;
-  height: 140%;
-  -moz-transition: 0.2s width 0s, 0.2s height 0.2s;
-  -o-transition: 0.2s width 0s, 0.2s height 0.2s;
-  -webkit-transition: 0.2s width 0s, 0.2s height 0.2s;
-  transition: 0.2s width 0s, 0.2s height 0.2s;
-}
-header .main-nav .nav-menu li:not(:last-child) {
-  margin-right: 54px;
-}
-header .powered-by {
-  flex: 1;
-  text-align: right;
-}
-header .powered-by span, header .powered-by img {
-  vertical-align: middle;
+header .app-link {
   display: inline-block;
 }
-header .powered-by img {
-  width: 30px;
-  margin-left: 10px;
+header .app-link img {
+  width: 40px;
+  margin-right: 12px;
+}
+header .app-link span {
+  font-size: 20px;
+  color: #ebebeb;
+  font-weight: 400;
+}
+header .app-link img, header .app-link span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .input-group {
@@ -463,6 +338,19 @@ header .powered-by img {
     background-size: 339% auto;
     background-position: 76% top;
   }
+}
+
+.main-app {
+  background-color: #ebebeb;
+  width: 100%;
+  min-height: 100vh;
+}
+.main-app .main-container {
+  max-width: 1440px;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home-form {

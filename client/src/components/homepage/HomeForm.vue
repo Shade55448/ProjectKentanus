@@ -22,13 +22,16 @@
         <button class="btn-confirm">Sign in</button>
       </div>
       <div class="hf-card" :class="{'hf-card-active': this.selectId==1}">
-        <div class="input-box" id="regUser">
-          <input @blur="validateInput(this.regName, /^([\w-\.]+@([\w-]+\.)+[\w-]{2,10})?$/i, 'regUser')" v-model="this.regName" type="text" name="user" placeholder="Type Username or email">
+        <div class="input-box">
+          <input v-model="this.regName" type="text" name="fullname" placeholder="Full name">
+        </div>
+        <div class="input-box" id="regMail">
+          <input @blur="validateInput(this.regName, /^([\w-\.]+@([\w-]+\.)+[\w-]{2,10})?$/i, 'regMail')" v-model="this.regMail" type="email" name="email" placeholder="Type Username or email">
         </div>
         <div class="input-box" id="regPass">
           <input @blur="validateInput(this.regPass, /[\d]{1}/g, 'regPass')" v-model="this.regPass" type="password" name="user" placeholder="Password (at least one digit)">
         </div>
-        <button class="btn-confirm">Sign up</button>
+        <button @click="sendRegistration" class="btn-confirm">Sign up</button>
       </div>
     </div>
   </div>
@@ -47,6 +50,7 @@ export default {
       logPass: "",
       regName: "",
       regPass: "",
+      regMail: "",
       validPass: false
     }
   },
@@ -60,7 +64,7 @@ export default {
     },
     sendLogin() {
       let currentObj = this;
-      this.axios.post(this.globalServeLink + 'loginFile', {
+      this.axios.post(`${this.globalServeLink} login`, {
         name: this.logName,
         pass: this.logPass
       }).then(function (response) {
@@ -71,14 +75,16 @@ export default {
     },
     sendRegistration() {
       let currentObj = this;
-      this.axios.post(this.globalServeLink + 'regFile', {
+      this.axios.post(`${this.globalServeLink} register`, {
         name: this.regName,
-        pass: this.regPass,
-        mail: this.regMail
+        password: this.regPass,
+        email: this.regMail
       }).then(function (response) {
         currentObj.output = response.data;
+        console.log(response.data);
       }).catch(function (error) {
         currentObj.output = error;
+        console.log(error);
       });
     },
     validateInput(value, regData, elemId){

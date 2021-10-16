@@ -1,6 +1,7 @@
 <template>
-  <div class="home-form">
+  <div class="profile-panel">
     
+
   </div>
 </template>
 
