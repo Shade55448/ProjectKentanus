@@ -14,7 +14,9 @@ const UserRepository_1 = require("../Database/Repository/UserRepository");
 const Schema_1 = require("../Database/Schema/Schema");
 function setServer() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (0, mongoose_1.connect)('mongodb://localhost:27017/kentanus');
+        const dbUrl = process.env.DB || 'localhost:27017';
+        const db = `mongodb://${dbUrl}/kentanus`;
+        yield (0, mongoose_1.connect)(db);
         const a = new UserRepository_1.default((0, mongoose_1.model)('User', (0, Schema_1.default)()));
         const express = require('express');
         const app = express();
@@ -27,6 +29,10 @@ function setServer() {
                 a.registerUser(req.body, res);
             });
         });
+        app.post('/login', function (req, res) {
+        });
+        const port = process.env.mongoDb;
+        console.log(port);
         app.listen(8080);
         console.log('Server started');
     });
