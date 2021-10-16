@@ -19,7 +19,7 @@
         <div class="input-box" id="logPass">
           <input v-model="this.logPass" type="text" name="user" placeholder="Password">
         </div>
-        <button class="btn-confirm">Sign in</button>
+        <button class="btn-confirm" @click="sendLogin">Sign in</button>
       </div>
       <div class="hf-card" :class="{'hf-card-active': this.selectId==1}">
         <div class="input-box">
@@ -81,10 +81,10 @@ export default {
         email: this.regMail
       }).then(function (response) {
         currentObj.output = response.data;
-        console.log(response.data);
+        console.log("Fucking result: " + response.data);
       }).catch(function (error) {
         currentObj.output = error;
-        console.log(error);
+        console.log("Fucking result: " + error);
       });
     },
     validateInput(value, regData, elemId){

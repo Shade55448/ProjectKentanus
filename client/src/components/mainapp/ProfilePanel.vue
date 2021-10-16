@@ -1,7 +1,13 @@
 <template>
   <div class="profile-panel">
-    
-
+    <div class="image-box" style="background-image: url(../assets/img/user-placeholder.jpg);"></div>
+    <div class="info-col">
+      <h1 class="user-name">Jane Doe</h1>
+      <span class="user-home">
+        Some shithole<br />
+        near redneck town
+      </span>
+    </div>
   </div>
 </template>
 
@@ -15,17 +21,7 @@ export default {
     }
   },
   methods: {
-    sendLogin() {
-      let currentObj = this;
-      this.axios.post(this.globalServeLink + 'loginFile', {
-        name: this.logName,
-        pass: this.logPass
-      }).then(function (response) {
-        currentObj.output = response.data;
-      }).catch(function (error) {
-        currentObj.output = error;
-      });
-    }
+
   },
   mounted() {
 

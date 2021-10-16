@@ -8,15 +8,33 @@
         </router-link>
       </div>
     </header>
+    <div class="app-wrap">
+      <div class="main-container flex-box">
+        <div class="profile-panel-wrap">
+          <ProfilePanel />
+        </div>
+        <div class="wall-wrap">
+
+        </div>
+        <div class="user-list-wrap">
+          <ListPanel />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import ProfilePanel from "@/components/mainapp/ProfilePanel.vue";
+import ListPanel from "@/components/mainapp/ListPanel.vue";
 
 export default {
   title: "App | White~sender",
   name: "MainApp",
-  components: {},
+  components: {
+    ProfilePanel,
+    ListPanel
+  },
 };
 </script>
 
