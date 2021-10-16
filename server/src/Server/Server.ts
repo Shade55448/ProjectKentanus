@@ -19,16 +19,13 @@ export default async function setServer(): Promise<void> {
         res.send('Hello World');
     });
 
-    app.post('/register', async function (req, res) {
+    app.post('/register', function (req, res) {
         a.registerUser(req.body, res);
     })
 
     app.post('/login', function (req, res) {
-
+        a.login(req.body, res);
     })
-
-    const port = process.env.mongoDb;
-    console.log(port);
 
     app.listen(8080);
     console.log('Server started');

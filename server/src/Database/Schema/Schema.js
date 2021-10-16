@@ -5,7 +5,8 @@ function userSchema() {
     return new mongoose_1.Schema({
         name: { type: String, required: true },
         password: { type: String, required: true },
-        email: { type: String, required: true }
+        email: { type: String, required: true },
+        token: { type: String, required: true }
     });
 }
 exports.default = userSchema;

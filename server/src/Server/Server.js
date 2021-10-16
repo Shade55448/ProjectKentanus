@@ -25,14 +25,11 @@ function setServer() {
             res.send('Hello World');
         });
         app.post('/register', function (req, res) {
-            return __awaiter(this, void 0, void 0, function* () {
-                a.registerUser(req.body, res);
-            });
+            a.registerUser(req.body, res);
         });
         app.post('/login', function (req, res) {
+            a.login(req.body, res);
         });
-        const port = process.env.mongoDb;
-        console.log(port);
         app.listen(8080);
         console.log('Server started');
     });
