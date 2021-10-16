@@ -5,11 +5,13 @@ import userSchema from '../Database/Schema/Schema';
 
 export default async function setServer(): Promise<void> {
 
-    await connect('mongodb://localhost:27017/kentanus');
+    const dbUrl = process.env.DB || 'localhost:27017';
+    const db = `mongodb://${dbUrl}/kentanus`;
+    await connect(db);
     const a = new UserRepository(model<User>('User', userSchema()));
 
-    const express = require('express')
-    const app = express()
+    const express = require('express');
+    const app = express();
 
     app.use(express.json());
 
@@ -20,6 +22,13 @@ export default async function setServer(): Promise<void> {
     app.post('/register', async function (req, res) {
         a.registerUser(req.body, res);
     })
+
+    app.post('/login', function (req, res) {
+
+    })
+
+    const port = process.env.mongoDb;
+    console.log(port);
 
     app.listen(8080);
     console.log('Server started');
