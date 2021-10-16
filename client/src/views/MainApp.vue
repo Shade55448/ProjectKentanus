@@ -1,13 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="main-app">
+
   </div>
 </template>
 
 <script>
 
 export default {
-  title: "Home | White~sender",
+  title: "App | White~sender",
   name: "MainApp",
   components: {},
 };

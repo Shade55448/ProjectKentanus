@@ -16,7 +16,7 @@ const routes = [
     name: "MainApp",
     meta: {
       auth: true,
-      title: "Home | White~sender"
+      title: "App | White~sender"
     },
     component: () =>
       import("../views/MainApp.vue"),

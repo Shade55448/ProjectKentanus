@@ -1,5 +1,6 @@
 .home-form{
   width: 430px;
+  max-width: 100%;
   .hf-head{
     padding: 0 58px;
 
@@ -90,6 +91,12 @@
 
         &:hover{background-color: rgba(255,255,255,.8);}
       }
+    }
+  }
+  @media screen and (max-width: 430px){
+    .hf-head{padding: 0 28px;}
+    .hf-body {
+      .hf-card{padding: 50px 20px;}
     }
   }
 }

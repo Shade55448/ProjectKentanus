@@ -40,6 +40,7 @@
     }
 
     .home-link{
+      display: inline-block;
       img{
         width: 60px;
         margin-right: 12px;
@@ -86,5 +87,46 @@
       right: 60px;
       top: 200px;
     }
+  }
+
+  @media screen and (max-width: 1200px){
+    display: block;
+    background-size: 170% auto;
+    background-position: 95% top;
+
+    .left-side, .right-side{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .left-side{
+      background-color: $blue;
+      padding: 20px 36px;
+
+      .home-link {
+        img{width: 40px;}
+        span{font-size: 18px;}
+      }
+      .ls-background{display: none;}
+      .home-title, .home-intro-text, .home-copyright{display: none;}
+    }
+
+    .right-side {
+      padding: 80px 0;
+      text-align: center;
+
+      .home-form-wrap{
+        max-width: 90%;
+        position: relative;
+        display: inline-block;
+        right: 0;
+        top: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  @media screen and (max-width: 430px){
+    background-size: 339% auto;
+    background-position: 76% top;
   }
 }

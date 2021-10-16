@@ -8,10 +8,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+    }
+  },
   watch: {
     $route (to) {document.title = to.meta.title || "White~sender"}
   },
-  components: {}
+  components: {},
+  provide:{
+    globalServeLink: "http://localhost:8081/"
+  }
 };
 </script>
 <style lang="scss">

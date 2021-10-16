@@ -3,26 +3,32 @@
     <div class="hf-head">
       <div class="hf-toggle flex-box">
         <div class="slide-card" id="slideAnim"></div>
-        <button @mouseover="hoveredId(0)" @mouseleave="hoveredId(this.selectId)" class="toggle-item hf-card-active">
+        <button @mouseover="hoveredId(0)" @mouseleave="hoveredId(this.selectId)" @click="selectedId(0)" :class="{'hf-card-active': this.selectId==0}" class="toggle-item">
           <span>Sign in</span>
         </button>
-        <button @mouseover="hoveredId(1)" @mouseleave="hoveredId(this.selectId)" class="toggle-item">
+        <button @mouseover="hoveredId(1)" @mouseleave="hoveredId(this.selectId)" @click="selectedId(1)" :class="{'hf-card-active': this.selectId==1}" class="toggle-item">
           <span>Sign up</span>
         </button>
       </div>
     </div>
     <div class="hf-body">
-      <div class="hf-card hf-card-active">
-        <div class="input-box">
-          <input type="text" name="user" placeholder="Username or email">
+      <div class="hf-card" :class="{'hf-card-active': this.selectId==0}">
+        <div class="input-box" id="logUser">
+          <input v-model="this.logName" type="text" name="user" placeholder="Username or email">
         </div>
-        <div class="input-box">
-          <input type="password" name="user" placeholder="Password">
+        <div class="input-box" id="logPass">
+          <input v-model="this.logPass" type="text" name="user" placeholder="Password">
         </div>
         <button class="btn-confirm">Sign in</button>
       </div>
-      <div class="hf-card">
-
+      <div class="hf-card" :class="{'hf-card-active': this.selectId==1}">
+        <div class="input-box" id="regUser">
+          <input @blur="validateInput(this.regName, /^([\w-\.]+@([\w-]+\.)+[\w-]{2,10})?$/i, 'regUser')" v-model="this.regName" type="text" name="user" placeholder="Type Username or email">
+        </div>
+        <div class="input-box" id="regPass">
+          <input @blur="validateInput(this.regPass, /[\d]{1}/g, 'regPass')" v-model="this.regPass" type="password" name="user" placeholder="Password (at least one digit)">
+        </div>
+        <button class="btn-confirm">Sign up</button>
       </div>
     </div>
   </div>
@@ -32,10 +38,16 @@
 export default {
   name: "HomeForm",
   components: {},
+  inject:["globalServeLink"],
   data() {
     return {
       hoverId: 0,
-      selectId: 0
+      selectId: 0,
+      logName: "",
+      logPass: "",
+      regName: "",
+      regPass: "",
+      validPass: false
     }
   },
   methods: {
@@ -44,8 +56,44 @@ export default {
       document.getElementById("slideAnim").style.transform = "translateX("+ (id*100) +"%)";
     },
     selectedId(id){
-      this.hoverId = id;
+      this.selectId = id;
+    },
+    sendLogin() {
+      let currentObj = this;
+      this.axios.post(this.globalServeLink + 'loginFile', {
+        name: this.logName,
+        pass: this.logPass
+      }).then(function (response) {
+        currentObj.output = response.data;
+      }).catch(function (error) {
+        currentObj.output = error;
+      });
+    },
+    sendRegistration() {
+      let currentObj = this;
+      this.axios.post(this.globalServeLink + 'regFile', {
+        name: this.regName,
+        pass: this.regPass,
+        mail: this.regMail
+      }).then(function (response) {
+        currentObj.output = response.data;
+      }).catch(function (error) {
+        currentObj.output = error;
+      });
+    },
+    validateInput(value, regData, elemId){
+      if (value != "") {
+        let regPattern = new RegExp(regData);
+        if (regPattern.test(value)) {
+          document.getElementById(elemId).classList.add("input-ok");
+        }
+        else{document.getElementById(elemId).classList.remove("input-ok");}
+      }
+      else{document.getElementById(elemId).classList.remove("input-ok");}
     }
+  },
+  mounted() {
+
   }
 };
 </script>
