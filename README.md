@@ -3,5 +3,5 @@
 ## TODO
 
 - Database password
-- Docker volumes
-- 
+- Docker ports (in application)
+- Git + docker guides

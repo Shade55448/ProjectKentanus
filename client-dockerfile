@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+
+COPY ./client/package*.json ./
+
+RUN npm install
+RUN npm install -g http-server
+
+COPY ./client/dist ./dist
+
+CMD ["http-server", "dist"]

@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+
+COPY ./server/package*.json ./
+
+RUN npm install
+RUN npm install -g nodemon
+
+COPY ./server/dist ./dist
+
+CMD [ "nodemon", "--legacy-watch", "dist/server.js" ]
