@@ -9,4 +9,4 @@ RUN npm install -g nodemon
 
 COPY ./server/dist ./dist
 
-CMD [ "nodemon", "--legacy-watch", "dist/server.js" ]
+CMD [ "nodemon", "--legacy-watch", "dist/app.js" ]
