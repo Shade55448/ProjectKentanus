@@ -3,16 +3,16 @@
     <div class="hf-head">
       <div class="hf-toggle flex-box">
         <div class="slide-card" id="slideAnim"></div>
-        <button @mouseover="hoveredId(0)" @mouseleave="hoveredId(this.selectId)" @click="selectedId(0)" :class="{'hf-card-active': this.selectId==0}" class="toggle-item">
+        <button @mouseover="hoveredId(0)" @mouseleave="hoveredId(this.selectId)" @click="selectedId(0)" :class="{'hf-card-active': this.selectId===0}" class="toggle-item">
           <span>Sign in</span>
         </button>
-        <button @mouseover="hoveredId(1)" @mouseleave="hoveredId(this.selectId)" @click="selectedId(1)" :class="{'hf-card-active': this.selectId==1}" class="toggle-item">
+        <button @mouseover="hoveredId(1)" @mouseleave="hoveredId(this.selectId)" @click="selectedId(1)" :class="{'hf-card-active': this.selectId===1}" class="toggle-item">
           <span>Sign up</span>
         </button>
       </div>
     </div>
     <div class="hf-body">
-      <div class="hf-card" :class="{'hf-card-active': this.selectId==0}">
+      <div class="hf-card" :class="{'hf-card-active': this.selectId===0}">
         <div class="input-box" id="logUser">
           <input v-model="this.logName" type="text" name="user" placeholder="Username or email">
         </div>
@@ -21,7 +21,7 @@
         </div>
         <button class="btn-confirm" @click="sendLogin">Sign in</button>
       </div>
-      <div class="hf-card" :class="{'hf-card-active': this.selectId==1}">
+      <div class="hf-card" :class="{'hf-card-active': this.selectId===1}">
         <div class="input-box">
           <input v-model="this.regName" type="text" name="fullname" placeholder="Full name">
         </div>
@@ -41,7 +41,7 @@
 export default {
   name: "HomeForm",
   components: {},
-  inject:["globalServeLink"],
+  inject:[""],
   data() {
     return {
       hoverId: 0,
@@ -62,33 +62,8 @@ export default {
     selectedId(id){
       this.selectId = id;
     },
-    sendLogin() {
-      let currentObj = this;
-      this.axios.post(`${this.globalServeLink} login`, {
-        name: this.logName,
-        pass: this.logPass
-      }).then(function (response) {
-        currentObj.output = response.data;
-      }).catch(function (error) {
-        currentObj.output = error;
-      });
-    },
-    sendRegistration() {
-      let currentObj = this;
-      this.axios.post(`${this.globalServeLink} register`, {
-        name: this.regName,
-        password: this.regPass,
-        email: this.regMail
-      }).then(function (response) {
-        currentObj.output = response.data;
-        console.log("Fucking result: " + response.data);
-      }).catch(function (error) {
-        currentObj.output = error;
-        console.log("Fucking result: " + error);
-      });
-    },
     validateInput(value, regData, elemId){
-      if (value != "") {
+      if (value !== "") {
         let regPattern = new RegExp(regData);
         if (regPattern.test(value)) {
           document.getElementById(elemId).classList.add("input-ok");
@@ -98,9 +73,6 @@ export default {
       else{document.getElementById(elemId).classList.remove("input-ok");}
     }
   },
-  mounted() {
-
-  }
 };
 </script>
 

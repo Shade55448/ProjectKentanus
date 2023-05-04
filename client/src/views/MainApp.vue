@@ -3,7 +3,7 @@
     <header>
       <div class="main-container">
         <router-link class="app-link" to="/app">
-          <img alt="White~sender logo" src="assets/img/logo.svg">
+          <img alt="White~sender logo" src="/assets/img/logo.svg">
           <span>White~sender</span>
         </router-link>
       </div>
