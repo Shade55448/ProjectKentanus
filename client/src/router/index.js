@@ -7,7 +7,7 @@ const routes = [
     name: "Home",
     meta: {
       auth: true,
-      title: "White~sender"
+      title: "White~sender",
     },
     component: Home,
   },
@@ -16,10 +16,9 @@ const routes = [
     name: "MainApp",
     meta: {
       auth: true,
-      title: "App | White~sender"
+      title: "App | White~sender",
     },
-    component: () =>
-      import("../views/MainApp.vue"),
+    component: () => import("../views/MainApp.vue"),
   },
 ];
 

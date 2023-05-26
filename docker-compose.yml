@@ -17,6 +17,8 @@ services:
       dockerfile: client-dockerfile
     ports:
       - '8080:8080'
+    environment:
+      - BACKEND_URL=http://172.25.0.10
     volumes:
       - ./client/dist:/app/dist
     depends_on:

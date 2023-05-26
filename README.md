@@ -2,10 +2,6 @@
 
 ## TODO
 
-- Database password
-- Docker ports (in application)
-- Git + docker guides
-
 ## Guides
 
 ### Git
@@ -45,4 +41,8 @@ Example2: Your LOCALHOST (not app in container) frontend app communicate with ba
   - Backend: http://127.0.0.1:9090 (container ip address: 172.25.0.10)
 
 After any change in code (backend/frontend), just rebuild your project. Changes should be automatically synced with docker.
+
+### Build
+
+- npm install && npm run build
 

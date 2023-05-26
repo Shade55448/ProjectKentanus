@@ -3,7 +3,7 @@
     <header>
       <div class="main-container">
         <router-link class="app-link" to="/app">
-          <img alt="White~sender logo" src="/assets/img/logo.svg">
+          <img alt="White~sender logo" src="/assets/img/logo.svg" />
           <span>White~sender</span>
         </router-link>
       </div>
@@ -13,9 +13,7 @@
         <div class="profile-panel-wrap">
           <ProfilePanel />
         </div>
-        <div class="wall-wrap">
-
-        </div>
+        <div class="wall-wrap"></div>
         <div class="user-list-wrap">
           <ListPanel />
         </div>
@@ -33,11 +31,9 @@ export default {
   name: "MainApp",
   components: {
     ProfilePanel,
-    ListPanel
+    ListPanel,
   },
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

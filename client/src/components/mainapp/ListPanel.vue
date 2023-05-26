@@ -1,7 +1,6 @@
 <template>
   <div class="users-panel">
-    <a class="">
-    </a>
+    <a class=""> </a>
   </div>
 </template>
 
@@ -10,19 +9,11 @@ export default {
   name: "ListPanel",
   components: {},
   data() {
-    return {
-
-    }
+    return {};
   },
-  methods: {
-
-  },
-  mounted() {
-
-  }
+  methods: {},
+  mounted() {},
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

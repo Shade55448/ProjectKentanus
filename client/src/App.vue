@@ -1,20 +1,21 @@
 <template>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-    }
+    return {};
   },
   watch: {
-    $route (to) {document.title = to.meta.title || "White~sender"}
+    $route(to) {
+      document.title = to.meta.title || "White~sender";
+    },
   },
   components: {},
-  provide:{
-  }
+  provide: {},
 };
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
