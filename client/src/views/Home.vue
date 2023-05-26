@@ -1,11 +1,10 @@
 <template>
   <div class="ws-home flex-box">
-    <!--<img alt="Vue logo" src="../assets/logo.png" />-->
     <div class="left-side">
       <div class="ls-background"></div>
       <div class="ls-foreground">
         <router-link class="home-link" to="/">
-          <img alt="White~sender logo" src="assets/img/logo.svg">
+          <img alt="White~sender logo" src="/assets/img/logo.svg">
           <span>White~sender</span>
         </router-link>
         <h1 class="home-title">Welcome to our social network</h1>
