@@ -2,6 +2,11 @@
 
 ## TODO
 
+- There is no easy way how to pass environment variables from docker to vue since I am using copy dist/ to container. I think it will need to be changed
+- Linter is raising warnings with crlf, check how to disable it
+- Looks like client/dist is not fully covered by .gitignore. Check why
+- Docs
+
 ## Guides
 
 ### Git
@@ -41,6 +46,7 @@ Example2: Your LOCALHOST (not app in container) frontend app communicate with ba
   - Backend: http://127.0.0.1:9090 (container ip address: 172.25.0.10)
 
 After any change in code (backend/frontend), just rebuild your project. Changes should be automatically synced with docker.
+Backend should reload container also.
 
 ### Build
 

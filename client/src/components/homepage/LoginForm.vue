@@ -104,6 +104,7 @@ export default {
       password: "",
       username: "",
       gender: "",
+      backendUrl: "http://172.25.0.10:9090" //TODO: Change to environment variable
     };
   },
   methods: {
@@ -118,14 +119,14 @@ export default {
 
       try {
         const response = await fetch(
-          "http://172.25.0.10" + "/signUp",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newUser),
-          }
+            this.backendUrl + "/api" + "/signUp",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(newUser),
+            }
         );
 
         if (!response.ok) {
@@ -144,15 +145,14 @@ export default {
       const { email, password } = this;
 
       try {
-        const response = await fetch(
-          process.env.BACKEND_URL || "https://127.0.0.1" + "/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-          }
+        const response = await fetch(this.backendUrl + "/api" + "/login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({email, password}),
+            }
         );
 
         if (!response.ok) {
