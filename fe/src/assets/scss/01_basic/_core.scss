@@ -1,0 +1,84 @@
+
+//Get background from variable
+@function background($imageKey) {
+  @if map-has-key($image-list, $imageKey) {
+    @return map-get($image-list, $imageKey);
+  }
+
+  @warn "Unknown path:  `#{$imageKey}`";
+  @return null;
+}
+
+*{box-sizing: border-box;}
+
+//body settings
+body{
+  margin: 0px;
+  padding: 0px;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.body-wrap{overflow: hidden;}
+
+.no-scroll{
+  @media screen and (max-width: $tabletLarge){
+    overflow: hidden;
+    height: 100%;
+  }
+}
+
+.page-box{
+  display: block;
+  width: 100%;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+//reset button default design
+button{
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+input, textarea{font-family: 'Montserrat', sans-serif;}
+//set pointer cursor to buttons and links
+button, a{cursor: pointer;}
+
+//no underline for links
+a{text-decoration: none;outline: none;}
+
+//selected text color
+::selection {
+  background: rgba(0,0,0,.5);
+  color: rgba(255,255,255,.5);
+}
+
+//foundation element in body
+.content-wrapper{
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.flex-box{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+//hide element
+.d-none{display: none !important;}
