@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/*Import basic scss*/
+@import "01_basic/variables";
+@import "01_basic/fonts";
+@import "01_basic/mixins";
+@import "01_basic/core";
+@import "01_basic/typography";
+
+@import "02_structure/header";
+@import "02_structure/footer";
+@import "02_structure/container";
+@import "02_structure/input";
+
+@import "03_pages/p-home";
+@import "03_pages/p-main";
+
+@import "05_components/home-form";
+@import "05_components/profile-panel";
+@import "05_components/users-panel";

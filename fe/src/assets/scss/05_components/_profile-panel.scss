@@ -1,0 +1,36 @@
+.profile-panel{
+  .image-box{
+    width: 142px;
+    height: 142px;
+    background-size: cover;
+    border-radius: 100%;
+    background-position: center;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .info-col{
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 76px 18px;
+    display: block;
+    margin-top: -50px;
+    width: 100%;
+
+    .user-name{
+      font-weight: 500;
+      color: $black;
+      text-align: center;
+      margin-top: 0;
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+    .user-home{
+      text-align: center;
+      font-size: 18px;
+      color: #ACACAC;
+      display: block;
+    }
+  }
+}
